@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Bench2d asmjs</title></head>
+
+  <body>
+    <div>This is going to take a while to warm up and run. Your browser window will be locked up while it does so.</div>
+
+    <div id='echo'></div>
+    <script type='text/javascript'>
+      var Module = {
+      
+      
+       };
+       </script>
+    <script>
+    function print(msg) {
+      var echo = document.getElementById('echo');
+      echo.innerHTML += msg + '<br>';
+    }
+
+
+
+
+    
+    
+    </script>
+
+<script type='text/javascript'>
+  var Module = {};
+  fetch('box2d.js/Box2D_v2.3.1b_min.wasm')
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+      Module.wasmBinary = buffer;
+      var script = document.createElement('script');
+      script.src = "box2d.js/Box2D_v2.3.1b_min.js";
+      script.onload = function() {
+        console.log("Emscripten boilerplate loaded.")
+
+        
+          var script = document.createElement('script');
+          script.src = "bench2d_asmjs.js";
+          document.body.appendChild(script);
+
+          
+          var script = document.createElement('script');
+          script.src = "bench2d_run.js";
+          document.body.appendChild(script);       
+        
+      }
+      document.body.appendChild(script);
+    });
+</script>
+  </body>
+</html>
